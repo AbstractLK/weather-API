@@ -2,11 +2,12 @@ const cron = require('node-cron');
 const transporter = require('./emailSender');
 const userModel = require('../models/userModel');
 const axios = require('axios');
-const url = "http://localhost:3001/auth/insertWeather?id=";
+
 
 function runScheduler() {
     cron.schedule('0 */3 * * *', async () => {
         try {
+            const url = process.env.ENV_URL+"/auth/insertWeather?id=";
             const users = await  userModel.find();
             for (const user of users) {
                 const response = await axios.get(url + (await user).id);
