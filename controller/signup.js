@@ -9,7 +9,7 @@ async function signup(req, res) {
     } else {
         try {
             const savedUser = await userDB.insert(data);
-            res.status(200).json({name: savedUser.email});
+            res.status(200).json({id: savedUser.id, name: savedUser.email, message: "user created successful!"});
             console.log("user created successful!");
         } catch (e) {
             console.log(e + ' ');
