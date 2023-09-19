@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const update = require('../controller/update')
-const getWeatherData = require('../controller/getWeatherData')
-const getAll = require('../controller/getAll');
-const insertWeather = require('../controller/insertWeather');
+const controller = require('../controller/index');
 
-router.put('/update', update);
-router.get('/insertWeather', insertWeather);
-router.get('/getWeatherData', getWeatherData);
-router.get('/getAll', getAll);
+router.put('/update', controller.update);
+router.get('/insertWeather', controller.insertWeather);
+router.get('/getWeatherData', controller.getWeatherData);
+router.get('/getAll', controller.getAll);
+router.delete('/delete', controller.deleteUser);
 
 module.exports = router;
