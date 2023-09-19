@@ -5,7 +5,7 @@ async function signup(req, res) {
     const isExist = await userDB.isExist(data.email);
     if (isExist) {
         console.log('Already Registered!');
-        res.send(!isExist);
+        res.send('Already Registered!');
     } else {
         try {
             const savedUser = await userDB.insert(data);
