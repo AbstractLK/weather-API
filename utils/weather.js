@@ -5,12 +5,14 @@ const apiKEY = process.env.API_KEY;
 async function weatherInfo(location){
     try{
         const response = await axios.get(apiURL+ location+ "&appid="+ apiKEY);
+        const temp = response.data.main.temp-273.15;
+        const condition = response.data.weather[0].description;
         return {
-            temperature: response.data.main.temp,
-            weatherCondition: response.data.weather[0].description
+            temperature: temp,
+            weatherCondition: condition
         };
     } catch (e) {
-        console.error(e);
+        console.log(e);
     }
 
 }

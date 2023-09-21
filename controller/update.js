@@ -7,7 +7,7 @@ async function userUpdate(req, res) {
     console.log(updatedUser);
     try{
        await userModel.findByIdAndUpdate(userId, updatedUser, {new: true});
-       res.status(200).send("updated successfully!");
+       res.status(200).json({Message: "updated successfully!", data: updatedUser});
     } catch (e) {
         console.log(e);
         res.status(500).json({message: "update failed"});

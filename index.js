@@ -1,8 +1,8 @@
 const express = require('express');
-const scheduler = require('./utils/scheduler');
 const cors = require('cors');
 require('dotenv').config();
 require('./config/database').connect();
+require('./utils/scheduler').runScheduler();
 
 const authRoute = require('./router/auth');
 const authUser = require('./router/user');
@@ -24,4 +24,4 @@ app.all('*', (req, res) => {
 app.listen(process.env.APP_PORT, () => {
     console.log(process.env.APP_NAME + " stated at port " + process.env.APP_PORT);
 })
-scheduler();
+//scheduler();

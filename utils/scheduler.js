@@ -4,14 +4,14 @@ const userModel = require('../models/userModel');
 const axios = require('axios');
 
 
-function runScheduler() {
+exports.runScheduler = () => {
     cron.schedule('0 */3 * * *', async () => {
         try {
-            const url = process.env.ENV_URL+"/auth/insertWeather?id=";
+            const url = process.env.ENV_URL+"/user/insertWeather?id=";
             const users = await  userModel.find();
             for (const user of users) {
                 const response = await axios.get(url + (await user).id);
-                const tmp = response.data.temperature-273.15;
+                const tmp = response.data.temperature;
                 const emailContent = `
                     Hello ${user.email},
                     Here is the weather report for your location: ${user.location}.
@@ -38,4 +38,4 @@ function runScheduler() {
     console.log('Scheduler started');
 }
 
-module.exports = runScheduler;
+//module.exports = runScheduler;

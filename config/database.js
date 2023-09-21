@@ -7,7 +7,7 @@ exports.connect = () => {
         console.log('Database connected');
     })
     .catch(() => {
-        console.log('Database error');
+        console.log('Database Not connected');
 
     });
 }
