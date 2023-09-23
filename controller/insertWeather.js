@@ -9,7 +9,7 @@ async function insertWeather(req, res){
 
         user.weatherData.push({
             date: new Date(), // Convert date string to Date object
-            temperature: weatherInfo.temperature.toFixed(1),
+            temperature: weatherInfo.temperature,
             weatherCondition: weatherInfo.weatherCondition,
         });
         await user.save();
