@@ -5,7 +5,7 @@ require('./config/database').connect();
 require('./utils/scheduler').runScheduler();
 
 const authRoute = require('./router/auth');
-const authUser = require('./router/user');
+const userRoute = require('./router/user');
 
 const app = express();
 app.use(express.json());
@@ -15,7 +15,7 @@ app.use(cors());
 // }));
 
 app.use('/auth', authRoute);
-app.use('/user', authUser);
+app.use('/user', userRoute);
 app.all('*', (req, res) => {
     res.status(404).json({status: 404, message: "Page Not Found!"});
 });
