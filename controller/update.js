@@ -1,17 +1,13 @@
 const userModel = require('../models/userModel');
 
 async function userUpdate(req, res) {
-    //res.json({id: req.query.id, message: "updated" });
     const userId = req.query.id;
     const updatedUser = req.body;
     console.log(updatedUser);
-    try{
-       await userModel.findByIdAndUpdate(userId, updatedUser, {new: true});
-       res.status(200).json({Message: "updated successfully!", data: updatedUser});
-    } catch (e) {
-        console.log(e);
-        res.status(500).json({message: "update failed"});
-    }
+
+   await userModel.findByIdAndUpdate(userId, updatedUser, {new: true, runValidators:true});
+   res.status(200).json({Message: "updated successfully!", data: updatedUser});
+
 }
 
 module.exports = userUpdate;
