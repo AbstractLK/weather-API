@@ -1,3 +1,5 @@
+require('express-async-errors');
+const errorHandler = require('./handlers/errorHandler');
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -20,6 +22,7 @@ app.all('*', (req, res) => {
     res.status(404).json({status: 404, message: "Page Not Found!"});
 });
 
+app.use(errorHandler);
 
 app.listen(process.env.APP_PORT, () => {
     console.log(process.env.APP_NAME + " stated at port " + process.env.APP_PORT);
