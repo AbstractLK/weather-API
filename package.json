@@ -9,14 +9,14 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
-    "mongoose": "^7.2.3",
+    "mongoose": "^7.7.0",
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.5",
     "nodemon": "^2.0.22"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Kaveesha",
   "license": "ISC"
